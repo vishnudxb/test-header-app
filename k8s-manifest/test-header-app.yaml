@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-header-app
+  labels:
+    app: test-header-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-header-app
+  template:
+    metadata:
+      labels:
+        app: test-header-app
+    spec:
+      containers:
+        - name: test-header-app
+          image: vishnunair/test-header-app:latest
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "250m"
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-header-app
+  labels:
+    app: test-header-app
+spec:
+  selector:
+    app: test-header-app
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: ClusterIP
+
