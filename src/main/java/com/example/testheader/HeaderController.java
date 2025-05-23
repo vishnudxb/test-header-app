@@ -18,4 +18,8 @@ public class HeaderController {
 
         return "x-forwarded-for: " + xff + "\nremoteAddr: " + remoteAddr;
     }
+    @GetMapping("/getheader")
+    public ResponseEntity<Map<String, String>> getAllHeaders(@RequestHeader Map<String, String> headers) {
+        return ResponseEntity.ok(headers);
+    }
 }
