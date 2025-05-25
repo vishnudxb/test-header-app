@@ -22,8 +22,9 @@ public class HeaderController {
 
         return "x-forwarded-for: " + xff + "\nremoteAddr: " + remoteAddr;
     }
-    @GetMapping("/getheader")
+    @GetMapping("/getheaders")
     public ResponseEntity<Map<String, String>> getAllHeaders(@RequestHeader Map<String, String> headers) {
+        headers.forEach((k, v) -> System.out.println("Header: " + k + " => " + v));
         return ResponseEntity.ok(headers);
     }
 }
