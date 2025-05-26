@@ -2,6 +2,10 @@
 
 ```
 
+docker compose up --build
+
+OR
+
 docker build -t test-header-app .
 
 ```
