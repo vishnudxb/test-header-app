@@ -36,4 +36,9 @@ public class HeaderController {
         System.out.println("=== End ===");
         return ResponseEntity.ok(headers);
     }
+
+    @GetMapping("/actuator/health")
+    public ResponseEntity<String> healthCheck() {
+        return ResponseEntity.ok("UP");
+    }
 }
