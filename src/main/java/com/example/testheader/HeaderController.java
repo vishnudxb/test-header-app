@@ -11,7 +11,7 @@ import java.util.Map;
 @RestController
 public class HeaderController {
 
-    @GetMapping("/test")
+    @GetMapping("/user")
     public String test(HttpServletRequest request) {
         String clientIp = request.getRemoteAddr();
         String rawXff = request.getHeader("X-Forwarded-For");
@@ -29,7 +29,7 @@ public class HeaderController {
                "host: " + host;
     }
 
-    @GetMapping("/getheaders")
+    @GetMapping("/employee")
     public ResponseEntity<Map<String, String>> getAllHeaders(@RequestHeader Map<String, String> headers) {
         System.out.println("\n=== Request Headers Dump ===");
         headers.forEach((k, v) -> System.out.println(k + ": " + v));
